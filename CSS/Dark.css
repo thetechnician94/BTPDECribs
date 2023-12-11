@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+}
+
+.header{
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 10px;
+    padding:5px;
+    width: 100vw;
+}
+
+.footer{
+    background-color: #333333;
+    color: white;
+    text-align: left;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;    
+}
+.footer a{
+    color: white;
+    border-left: 2px solid lightgray;
+    border-right: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    border-radius: 3px;
+    margin-right: 5px;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.footer div{
+    vertical-align: middle;
+}
+
+#dataTable{
+    font-weight: bold;
+    width:95%;
+    margin:auto
+}
+
+
+#dataTable_wrapper{
+    margin-bottom: 3rem;
+    width:99%;
+    margin-right:auto;
+    margin-left:5px;
+    text-align: center;
+}
+body{
+    color: white;
+    font-family: "Tahoma", "Times New Roman", "Sans-Serif";
+    background-image:url(/Images/btp_shield_dark.png);
+    background-color: darkgray;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+    position: relative; /* Position relative for proper positioning of absolute elements */
+}
+
+.loginTitle{
+    margin-top:5%;
+    font-size: 24px;
+    text-align: center;
+    color: #333333;
+}
+
+
+.loginDialog{   
+    width: 50%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    vertical-align: middle;
+    font-weight: bold;
+
+}
+
+.loginDialog button{
+    width: 90%;
+    color: white;
+    font-weight: bold;
+    background-color: #660000;
+    border-radius: 50px;
+    font-size: 36px;
+    box-shadow: 4px 4px #333333;
+}
+
+.qualitySelect{
+    display: none;
+}
+
+.checkoutReason{
+    display: none;
+}
+
+.ritualLog{
+    display: none;
+}
+
+.permissionDenied{
+    width: 50%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    font-weight: bold;
+    background-color:#ff9999;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+
+.logText{
+    overflow-y:scroll;
+}
+.modal-content{
+    background-color: #333333;
+}
+.ui-dialog-content{
+    background-color: #333333 !important;
+    color: white;
+}
+
+.ui-dialog-titlebar{
+    background-color: #333333 !important;
+    color: white;
+}
+
+.ui-dialog-buttonpane{
+    background-color: #333333 !important;
+    color: white;
+}

@@ -10,7 +10,8 @@
             echo "<a href = 'Users.php'>Users</a>";
         }
         ?>
-       <!-- <a href='Profile.php'>Profile</a>-->
+        <!-- <a href='Profile.php'>Profile</a>-->
+        <a href="Help.php">Help</a>
         <a href='/Oauth/Signout.php'>Sign&nbsp;Out</a>
     </div>
 </div>

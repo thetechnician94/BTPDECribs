@@ -33,7 +33,7 @@
         <?PHP
         require "Header.php";
         ?>
-        <p>Having an issue? Please report all issues to our <a href='https://github.com/thetechnician94/BTPDECribs/issues'>GitHub</a>!</p>
+        <p>Having an issue? Please report all issues to our <a href='https://github.com/thetechnician94/BTPDECribs/issues' target="_blank">GitHub</a>!</p>
         <?PHP
         require "Footer.php";
         ?>

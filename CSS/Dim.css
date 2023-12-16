@@ -3,7 +3,7 @@
 }
 
 .header{
-    background-color: #121212;
+    background-color: #333333;
     color: white;
     text-align: center;
     font-size: 2em;
@@ -13,7 +13,7 @@
 }
 
 .footer{
-    background-color: #121212;
+    background-color: #333333;
     color: white;
     text-align: left;
     position: fixed;
@@ -23,9 +23,9 @@
 }
 .footer a{
     color: white;
-    border-left: 2px solid #333333;
-    border-right: 2px solid #333333;
-    border-bottom: 2px solid #333333;
+    border-left: 2px solid lightgray;
+    border-right: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
     border-radius: 3px;
     margin-right: 5px;
     padding: 5px;
@@ -55,7 +55,7 @@ body{
     color: white;
     font-family: "Tahoma", "Times New Roman", "Sans-Serif";
     background-image:url(/Images/btp_shield_dark.png);
-    background-color: #121212;
+    background-color: darkgray;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -92,7 +92,7 @@ body{
     width: 90%;
     color: white;
     font-weight: bold;
-    background-color: darkgray;
+    background-color: #660000;
     border-radius: 50px;
     font-size: 36px;
     box-shadow: 4px 4px #333333;
@@ -129,28 +129,30 @@ body{
     overflow-y:scroll;
 }
 .modal-content{
-    background-color: #121212;
+    background-color: #333333;
 }
 .ui-dialog-content{
-    background-color: #121212 !important;
+    background-color: #333333 !important;
     color: white;
 }
 
 .ui-dialog-titlebar{
-    background-color: #121212 !important;
+    background-color: #333333 !important;
     color: white;
 }
 
 .ui-dialog-buttonpane{
-    background-color: #121212 !important;
-    color: white;
-}
-.fixedHeader-floating{
-    background-color: #121212 !important;
+    background-color: #333333 !important;
     color: white;
 }
 
+.fixedHeader-floating{
+     background-color: darkgray !important;
+     color: white;
+}
+
+
 .dataTables_length{
-    background-color: #121212 !important;
+    background-color: darkgray !important;
     color: white;
 }

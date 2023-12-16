@@ -39,6 +39,7 @@
             <select name="Theme">
                 <option>Default</option>
                 <option>Dark</option>
+                <option>Dim</option>
             </select>
 
         </div>

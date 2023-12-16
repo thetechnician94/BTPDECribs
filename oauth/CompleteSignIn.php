@@ -1,17 +1,16 @@
 <?php
 
-
 //Oauth complete
 /* //We aren't going to store this info - but its here for later
-$_SESSION["token"] = filter_input(INPUT_POST, "access_token");
-$_SESSION["expires"] = filter_input(INPUT_POST, "expires_in");
-$_SESSION["scope"] = filter_input(INPUT_POST, "scope");
-$_SESSION["state"] = filter_input(INPUT_POST, "state");
-*/
+  $_SESSION["token"] = filter_input(INPUT_POST, "access_token");
+  $_SESSION["expires"] = filter_input(INPUT_POST, "expires_in");
+  $_SESSION["scope"] = filter_input(INPUT_POST, "scope");
+  $_SESSION["state"] = filter_input(INPUT_POST, "state");
+ */
 
 //Lookup User
 $userInfoURL = "https://www.googleapis.com/oauth2/v2/userinfo";
-$authorization = "Authorization: Bearer " .  filter_input(INPUT_POST, "access_token"); // Prepare the authorization token
+$authorization = "Authorization: Bearer " . filter_input(INPUT_POST, "access_token"); // Prepare the authorization token
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_URL, $userInfoURL);
@@ -37,6 +36,7 @@ foreach ($files as $file) {
     }
 }
 if ($userFile == null) { //Never signed in before
+    notifyAdmins($info["name"], $info["email"]);
     $temp = fopen($vUsersDir . "/" . $info["id"] . ".json", "w");
     $info["verified"] = false;
     $info["role"] = "";
@@ -53,7 +53,7 @@ if ($userFile == null) { //Never signed in before
         die();
     }
     $info["verified"] = true;
-    $info["role"]=$tempInfo["role"];
+    $info["role"] = $tempInfo["role"];
     fwrite($temp, json_encode($info));
     fclose($temp);
 }
@@ -66,6 +66,24 @@ $_SESSION["lastName"] = $info["family_name"];
 $_SESSION["firstName"] = $info["given_name"];
 $_SESSION["picture"] = $info["picture"];
 $_SESSION["role"] = $info["role"];
-
 //Redirect to the site
- header("Location: /Cribs.php");
+header("Location: /Cribs.php");
+
+function notifyAdmins($name, $email) {
+    require "Settings.php";
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $adminAlertURL,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array("content" => "A new user has attempted to sign in. $name, $email","username"=>"Beta Cribs Alerts")
+    ));
+    $response = curl_exec($curl);
+    curl_close($curl);
+    echo $response;
+}

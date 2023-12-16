@@ -1,6 +1,9 @@
 const prefsURL = "/API/Preference.php?uniq=" + new Date().getTime();
 let prefs = getPreferences();
 switch (prefs.Theme) {
+    case "Dim":
+        $("head").append('<link rel="stylesheet" href="/CSS/Dim.css" type="text/css" />');
+        break;
     case "Dark":
         $("head").append('<link rel="stylesheet" href="/CSS/Dark.css" type="text/css" />');
         break;

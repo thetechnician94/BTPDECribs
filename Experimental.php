@@ -32,7 +32,7 @@
         <?PHP
         require "Header.php";
         ?>
-        <p>The following are experimental features. If you would like, to try them out please do and report any issues you have to the GitHub accessible in the "Help" page</p>
+        <p>The following are experimental features. If you would like, try them out please do and report any issues you have to the GitHub accessible in the "Help" page</p>
         <ul>
             <li><a href='Profile.php'>Profile Customization</a></li>
         </ul>

@@ -137,3 +137,11 @@ body{
 .logText{
     overflow-y:scroll;
 }
+
+
+.homeText{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 100px;
+}

@@ -34,13 +34,12 @@ function initTable() {
                 data: "role",
                 title: "Role",
                 type: "select",
-                options: ["Guest", "Brother", "Admin"]
+                options: ["Guest", "Brother", "Admin", "Ritual Chair"]
             },
             {
                 data: "verified",
                 title: "Verified",
-                type: "text",
-                readonly: true
+                type: "checkbox"
             }
         ],
         paging: true,
@@ -52,14 +51,14 @@ function initTable() {
                 extend: "selected",
                 action: function (e, dt, node, config) {
                     var data = $('#dataTable').DataTable().rows({selected: true}).data();
-                    if (data[0]["verified"] === true) {
+                    if (data[0]["verified"] == "true") {
                         alert("This user has already been verified");
                         return;
                     }
                     $.ajax({
                         url: baseUserURL,
                         type: 'POST',
-                        data: "verify=" + data[0]["id"],
+                        data: "id=" + data[0]["id"]+"&verify=true&role="+data[0]["role"],
                         success: function (response, status, more) {
                             $('#dataTable').DataTable().ajax.reload();
                         },
@@ -104,7 +103,7 @@ function initTable() {
             $.ajax({//delete the table row
                 url: baseUserURL,
                 type: 'POST',
-                data: "id=" + rowdata["id"] + "&role=" + rowdata["role"],
+                data: "id=" + rowdata["id"] + "&role=" + rowdata["role"]+"&verify="+rowdata["verified"],
                 success: success,
                 error: error
             });

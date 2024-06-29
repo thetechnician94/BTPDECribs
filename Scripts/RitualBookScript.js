@@ -3,8 +3,22 @@ const userProfileURL = "/API/Me.php";
 const logURL = "/API/RitualLog.php";
 var user;
 $(document).ready(function () {
-    initTable();
     user = getMe();
+    initTable();
+    let buttons = $(".dt-buttons").find("button");
+    if (user.role !== "Admin"  && user.role!=="Ritual Chair") {
+        for (let i = 0; i < buttons.length; i++) {
+            switch (buttons[i].innerText) {
+                case "Add":
+                case"Edit":
+                case "Delete":
+                    $(buttons[i]).hide();
+                    break;
+                default:
+                    $(buttons[i]).show();
+            }
+        }
+    }
 });
 function getMe() {
     let data;
@@ -89,13 +103,14 @@ function initTable() {
                 step: "1",
                 min: "1",
                 unique: true,
-                required: true
+                required: true,
+                readonly: user.role !== "Admin" && user.role !== "Ritual Chair"
             },
             {
                 data: "Status",
                 title: "Status",
                 type: "text",
-                readonly: true,
+                readonly: user.role !== "Admin" && user.role !== "Ritual Chair",
                 value: "Available"
 
             },
@@ -107,25 +122,25 @@ function initTable() {
                 render: function (data) {
                     return data === "None" ? "" : data;
                 },
-                readonly: true
+                readonly: user.role !== "Admin" && user.role !== "Ritual Chair"
             },
             {
                 data: "LastUpdate",
                 title: "Last Update",
-                readonly: true
+                readonly: user.role !== "Admin" && user.role !== "Ritual Chair"
 
             },
             {
                 data: "Quality",
                 title: "Quality",
                 type: "text",
-                readonly: true
+                readonly: user.role !== "Admin" && user.role !== "Ritual Chair"
             },
             {
                 data: "Reason",
                 title: "Reason",
                 type: "textarea",
-                readonly: true,
+                readonly: user.role !== "Admin" && user.role !== "Ritual Chair",
                 render: function (data) {
                     return data === "None" ? "" : data;
                 }
@@ -261,6 +276,11 @@ function initTable() {
                 name: 'add'        // do not change name
             },
             {
+
+                text: 'Edit',
+                name: 'edit'        // do not change name
+            },
+            {
                 extend: 'selected', // Bind to Selected row
                 text: 'Delete',
                 name: 'delete'      // do not change name
@@ -276,11 +296,6 @@ function initTable() {
         fixedHeader: true,
         colReorder: true,
         onEditRow: function (datatable, rowdata, success, error) {
-            if (!verifyUnique(rowdata.ID)) {
-                alert("This book already exists");
-                return;
-            }
-
             $.ajax({
                 url: baseBookURL + rowdata["ID"],
                 type: 'PUT',

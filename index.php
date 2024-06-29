@@ -2,7 +2,7 @@
 if(isset($_SESSION["id"])){
     header("Location: /Cribs.php");
 }else{
-    header("Location: /Login.html");
+    header("Location: /Home.html");
 }
 /* 
  * To change this license header, choose License Headers in Project Properties.

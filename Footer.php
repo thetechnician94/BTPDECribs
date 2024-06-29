@@ -12,6 +12,7 @@
         ?>
         <!-- <a href='Profile.php'>Profile</a>-->
         <a href="Help.php">Help</a>
+        <a href='Experimental.php'>Experimental</a>
         <a href='/Oauth/Signout.php'>Sign&nbsp;Out</a>
     </div>
 </div>
